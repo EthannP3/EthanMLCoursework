@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import random
 import pandas as pd
 import seaborn as sns
+from kneed import KneeLocator
 from sklearn.datasets import fetch_covtype
 from sklearn.preprocessing import StandardScaler, PolynomialFeatures
 from sklearn.model_selection import train_test_split
@@ -14,9 +15,9 @@ from sklearn.metrics import mean_squared_error
 def sigmoid(x):
     return 1/(1+np.exp(-x))
 def standardisecols(x):
-    XMean = x.mean(axis=0, keepdims=True)
-    XStd = x.std(axis=0, keepdims=True)
-    return (x - XMean) / XStd
+    xmean = x.mean(axis=0, keepdims=True)
+    xstd = x.std(axis=0, keepdims=True)
+    return (x - xmean) / xstd
 
 Data, Target = fetch_covtype(return_X_y=True, shuffle=True)
 print(Data.shape[0], 'examples')
