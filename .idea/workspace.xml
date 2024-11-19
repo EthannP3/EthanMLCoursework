@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c8b5991-7a7d-42a9-b495-affd621585f4" name="Changes" comment="First Update">
+    <list default="true" id="4c8b5991-7a7d-42a9-b495-affd621585f4" name="Changes" comment="Adding Assignment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Clustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/Clustering.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LabTester.py" beforeDir="false" afterPath="$PROJECT_DIR$/LabTester.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/~$signment.docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,11 +78,39 @@
       <option name="project" value="LOCAL" />
       <updated>1731789624558</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Adding Assignment">
+      <option name="closed" value="true" />
+      <created>1731968846616</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731968846616</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Adding Assignment">
+      <option name="closed" value="true" />
+      <created>1731968908604</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731968908604</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="First Update" />
+    <MESSAGE value="Adding Assignment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Assignment" />
   </component>
 </project>
