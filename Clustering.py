@@ -6,6 +6,9 @@ import pandas as pd
 import seaborn as sns
 import sklearn.cluster
 from kneed import KneeLocator
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.datasets import fetch_covtype
 from itertools import combinations
 from sklearn.preprocessing import StandardScaler, PolynomialFeatures
@@ -15,6 +18,7 @@ from sklearn.mixture import GaussianMixture
 from sklearn.metrics import silhouette_samples, silhouette_score
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
+from sklearn.linear_model import LogisticRegression
 def sigmoid(x):
     return 1/(1+np.exp(-x))
 def standardisecols(x):
@@ -73,3 +77,16 @@ print(CorrectCountRand/IncorrectCountRand)
 print(CorrectCountRand)
 #Classification
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, Target, test_size=0.2, random_state=42)
+Classifiers = LogisticRegression(random_state=0).fit(X_train, y_train)
+Prediction = Classifiers.predict(X_test)
+LogAccuracy = accuracy_score(y_test, Prediction)
+
+model = DecisionTreeClassifier(random_state=0)
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+DecAccuracy = accuracy_score(y_test, predictions)
+
+modell = RandomForestClassifier(n_estimators=100, random_state=0)
+modell.fit(X_train, y_train)
+predictions = model.predict(X_test)
+ForAccuracy = accuracy_score(y_test, predictions)

@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c8b5991-7a7d-42a9-b495-affd621585f4" name="Changes" comment="Adding Assignment">
+    <list default="true" id="4c8b5991-7a7d-42a9-b495-affd621585f4" name="Changes" comment="Clustering mostly done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Clustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/Clustering.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~$signment.docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +93,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731968908604</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Clustering mostly done">
+      <option name="closed" value="true" />
+      <created>1732041493123</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732041493123</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,6 +118,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Update" />
     <MESSAGE value="Adding Assignment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Assignment" />
+    <MESSAGE value="Clustering mostly done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clustering mostly done" />
   </component>
 </project>
