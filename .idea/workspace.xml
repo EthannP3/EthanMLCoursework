@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c8b5991-7a7d-42a9-b495-affd621585f4" name="Changes" comment="Clustering mostly done">
-      <change afterPath="$PROJECT_DIR$/classification.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/regression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="4c8b5991-7a7d-42a9-b495-affd621585f4" name="Changes" comment="Seperating topics">
+      <change beforePath="$PROJECT_DIR$/regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/regression.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732042185631</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Seperating topics">
+      <option name="closed" value="true" />
+      <created>1732244232152</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1732244232152</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +135,7 @@
     <MESSAGE value="First Update" />
     <MESSAGE value="Adding Assignment" />
     <MESSAGE value="Clustering mostly done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clustering mostly done" />
+    <MESSAGE value="Seperating topics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Seperating topics" />
   </component>
 </project>
