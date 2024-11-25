@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-import pytorch
+import torch
+import torchvision
 import pymc as pm
 import torch.nn as nn
 import torch.nn.functional as F
@@ -66,54 +67,54 @@ print(ArrXTrain)
 # print("Coefficients: \n", Regressed.coef_)
 # print("Mean squared error: %.2f" % mean_squared_error(ArrYTest, YPrediction))
 # print("Coefficient of determination: %.2f" % r2_score(ArrYTest, YPrediction))
-# inputSize = 1
-# outputSize = 1
-# hiddenSize = 512
-# learnRate = 0.001
-# epochs = 500
-# Neural = FeedForwardNN(inputSize,
-#                        outputSize,
-#                        hiddenSize)
-# lossFunction = nn.MSEloss()
-# Optimizer = torch.optim.Adam(Neural.parameters(), learnRate)
-# trainDataset = TensorDataset(torch.from_numpy(ArrXTrain), torch.from_numpy(ArrYTrain))
-# trainLoader = DataLoader(trainDataset, batch_size=128, shuffle=True)
-# for epoch in range(epochs):
-#     Neural.train()
-#     trainLoss = 0.0
-#     for batchInput, batchOutput in trainLoader:
-#         Output = Neural(batchInput)
-#         Loss = lossFunction(Output, batchOutput)
-#         Optimizer.zero_grad()
-#         Loss.backward()
-#         Optimizer.step()
-#         trainLoss += Loss.item()
-#     trainLoss /= len(trainLoader)
-# Neural.eval()
-# with torch.no_grad():
-#     xTorch = torch.from_numpy(ArrXTest)
-#     YPrediction = Neural(xTorch)
-#     predLoss = lossFunction(YPrediction, torch.from_numpy(ArrYTest))
-#     print(predLoss)
-degree = 3  # Degree of the polynomial
-XTrainPoly = np.vstack([ArrXTrain ** d for d in range(degree + 1)]).T
-
-# Bayesian Polynomial Regression
-with pm.Model() as bayesian_poly_model:
-    # Priors for polynomial coefficients
-    coefficients = pm.Normal("coefficients", mu=0, sigma=10, shape=(degree + 1,))
-    sigma = pm.HalfNormal("sigma", sigma=10)
-
-    # Likelihood
-    mu = pm.math.dot(XTrainPoly, coefficients)  # Polynomial prediction
-    y_obs = pm.Normal("y_obs", mu=mu, sigma=sigma, observed=ArrYTrain)
-
-    # Inference
-    trace = pm.sample(2000, return_inferencedata=True)
-
-# Plot posterior distributions
-pm.plot_posterior(trace)
-plt.show()
+inputSize = 1
+outputSize = 1
+hiddenSize = 512
+learnRate = 0.001
+epochs = 500
+Neural = FeedForwardNN(inputSize,
+                       outputSize,
+                       hiddenSize)
+lossFunction = nn.MSEloss()
+Optimizer = torch.optim.Adam(Neural.parameters(), learnRate)
+trainDataset = TensorDataset(torch.from_numpy(ArrXTrain), torch.from_numpy(ArrYTrain))
+trainLoader = DataLoader(trainDataset, batch_size=128, shuffle=True)
+for epoch in range(epochs):
+    Neural.train()
+    trainLoss = 0.0
+    for batchInput, batchOutput in trainLoader:
+        Output = Neural(batchInput)
+        Loss = lossFunction(Output, batchOutput)
+        Optimizer.zero_grad()
+        Loss.backward()
+        Optimizer.step()
+        trainLoss += Loss.item()
+    trainLoss /= len(trainLoader)
+Neural.eval()
+with torch.no_grad():
+    xTorch = torch.from_numpy(ArrXTest)
+    YPrediction = Neural(xTorch)
+    predLoss = lossFunction(YPrediction, torch.from_numpy(ArrYTest))
+    print(predLoss)
+# degree = 3  # Degree of the polynomial
+# XTrainPoly = np.vstack([ArrXTrain ** d for d in range(degree + 1)]).T
+#
+# # Bayesian Polynomial Regression
+# with pm.Model() as bayesian_poly_model:
+#     # Priors for polynomial coefficients
+#     coefficients = pm.Normal("coefficients", mu=0, sigma=10, shape=(degree + 1,))
+#     sigma = pm.HalfNormal("sigma", sigma=10)
+#
+#     # Likelihood
+#     mu = pm.math.dot(XTrainPoly, coefficients)  # Polynomial prediction
+#     y_obs = pm.Normal("y_obs", mu=mu, sigma=sigma, observed=ArrYTrain)
+#
+#     # Inference
+#     trace = pm.sample(2000, return_inferencedata=True)
+#
+# # Plot posterior distributions
+# pm.plot_posterior(trace)
+# plt.show()
 
 # plt.plot(ArrXTest, YPrediction, color="blue", linewidth=3)
 # plt.xticks(())
