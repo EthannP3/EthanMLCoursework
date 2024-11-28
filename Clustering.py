@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 import pandas as pd
-import seaborn as sns
 import sklearn.cluster
 from kneed import KneeLocator
 from sklearn.ensemble import RandomForestClassifier
@@ -21,10 +20,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.linear_model import LogisticRegression
 def sigmoid(x):
     return 1/(1+np.exp(-x))
-def standardisecols(x):
-    xmean = x.mean(axis=0, keepdims=True)
-    xstd = x.std(axis=0, keepdims=True)
-    return (x - xmean) / xstd
+
 def TestValues(y, z):
     n = len(y)
     CorrectCounter = 0
@@ -34,59 +30,70 @@ def TestValues(y, z):
             CorrectCounter += (z[i] == z[j])
             PairNumber += 1
     IncorrectCounter = PairNumber - CorrectCounter
-    return IncorrectCounter, CorrectCounter
-Data, Target = fetch_covtype(return_X_y=True, shuffle=True)
-print(Data.shape[0], 'examples')
-print(Data.shape[1], "features")
-featureNames = fetch_covtype().feature_names
-print(featureNames)
+    return IncorrectCounter, CorrectCounter, PairNumber
 
-print(Data[0][0])
-print(Target[0])
+Data, Target = fetch_covtype(return_X_y=True, shuffle=True)
+# print(Data.shape[0], 'examples')
+# print(Data.shape[1], "features")
+featureNames = fetch_covtype().feature_names
+# print(featureNames)
+# print(Data[0][0])
+# print(Target[0])
 
 scaler = StandardScaler().fit(Data)
 X_scaled = scaler.transform(Data)
-print(X_scaled.mean(axis=0))
-print(X_scaled.std(axis=0))
+# print(X_scaled.mean(axis=0))
+# print(X_scaled.std(axis=0))
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, Target, test_size=0.982788, random_state=42)
-print('Training set size:', len(X_train))
-print('Test set size:', len(X_test))
+# print('Training set size:', len(X_train))
+# print('Test set size:', len(X_test))
 #0.982788
 
 Kmean = KMeans(n_clusters=7).fit(X_train)
-print(Kmean.labels_)
+# print(Kmean.labels_)
 
-IncorrectCounter, CorrectCounter = TestValues(y_train, Kmean.labels_)
-print(IncorrectCounter)
-print(CorrectCounter/IncorrectCounter)
-print(CorrectCounter)
-
+IncorrectCounter, CorrectCounter, PairAmount = TestValues(y_train, Kmean.labels_)
+Accuracy = round((CorrectCounter/PairAmount)*100, 4)
+print("K-Means Analysis:")
+print("Total Pairs:", PairAmount)
+print("Correct Pairs:", CorrectCounter)
+print("Incorrect Pairs:", IncorrectCounter)
+print("Accuracy:",Accuracy,"%")
+print("Error Rate:",100-Accuracy,"%")
 
 GausMix = GaussianMixture(n_components=7).fit(X_train)
 Predicted = GausMix.predict(X_train)
-IncorrectCountGmm, CorrectCountGmm = TestValues(y_train, Predicted)
-print(IncorrectCountGmm)
-print(CorrectCountGmm/IncorrectCountGmm)
-print(CorrectCountGmm)
+IncorrectCountGmm, CorrectCountGmm, PairAmountGmm = TestValues(y_train, Predicted)
+AccuracyGmm = round((CorrectCountGmm/PairAmountGmm)*100, 4)
+print("Gaussian Analysis:")
+print("Total Pairs:", PairAmountGmm)
+print("Correct Pairs:", CorrectCountGmm)
+print("Incorrect Pairs:", IncorrectCountGmm)
+print("Accuracy:",AccuracyGmm,"%")
+print("Error Rate:",100-AccuracyGmm,"%")
 
 random_labels = np.random.choice(range(7), size=len(y_train), replace=True)
-IncorrectCountRand, CorrectCountRand = TestValues(y_train, random_labels)
+IncorrectCountRand, CorrectCountRand, PairAmountRand = TestValues(y_train, random_labels)
+AccuracyRand= round((CorrectCountRand/PairAmountRand)*100, 4)
+print("Random Analysis:")
+print("Total Pairs:", PairAmountRand)
+print("Correct Pairs:", CorrectCountRand)
+print("Incorrect Pairs:", IncorrectCountRand)
+print("Accuracy:",AccuracyRand,"%")
+print("Error Rate:",100-AccuracyRand,"%")
 
-print(IncorrectCountRand)
-print(CorrectCountRand/IncorrectCountRand)
-print(CorrectCountRand)
 #Classification
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, Target, test_size=0.2, random_state=42)
-Classifiers = LogisticRegression(random_state=0).fit(X_train, y_train)
-Prediction = Classifiers.predict(X_test)
-LogAccuracy = accuracy_score(y_test, Prediction)
+# X_train, X_test, y_train, y_test = train_test_split(X_scaled, Target, test_size=0.2, random_state=42)
+# Classifiers = LogisticRegression(random_state=0).fit(X_train, y_train)
+# Prediction = Classifiers.predict(X_test)
+# LogAccuracy = accuracy_score(y_test, Prediction)
 
-model = DecisionTreeClassifier(random_state=0)
-model.fit(X_train, y_train)
-predictions = model.predict(X_test)
-DecAccuracy = accuracy_score(y_test, predictions)
-
-modell = RandomForestClassifier(n_estimators=100, random_state=0)
-modell.fit(X_train, y_train)
-predictions = model.predict(X_test)
-ForAccuracy = accuracy_score(y_test, predictions)
+# model = DecisionTreeClassifier(random_state=0)
+# model.fit(X_train, y_train)
+# predictions = model.predict(X_test)
+# DecAccuracy = accuracy_score(y_test, predictions)
+#
+# modell = RandomForestClassifier(n_estimators=100, random_state=0)
+# modell.fit(X_train, y_train)
+# predictions = model.predict(X_test)
+# ForAccuracy = accuracy_score(y_test, predictions)
